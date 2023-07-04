@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { ReactChild } from "react"
 
-function Todos() {
+
+const Todos: React.FC<{children: ReactChild, items: string[]}> = (props) => {
 	return (
-		<ul>
-			<li>Learn React</li>
-			<li>Learn Typescript</li>
-		</ul>
+		<React.Fragment>
+			<ul>
+				{props.items.map(item =>
+					<li key={item}>{item}</li>
+				)}
+			</ul>
+			<div>
+				{props.children}
+			</div>
+		</React.Fragment>
 	)
 }
+
 
 export default Todos
