@@ -1,6 +1,6 @@
 import React from "react"
 
-function TodoItem({ text }) {
+const TodoItem: React.FC<{ text: string }> = ({ text }) => {
   return <li>{text}</li>
 }
 
