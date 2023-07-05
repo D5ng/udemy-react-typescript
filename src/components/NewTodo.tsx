@@ -1,7 +1,9 @@
-import { useRef } from "react"
+import { useContext, useRef } from "react"
 import classes from "./NewTodo.module.css"
+import { TodosContext } from "../store/todos-context"
 
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+const NewTodo = () => {
+  const { addTodo: onAddTodo } = useContext(TodosContext)
   const todoTextInputRef = useRef<HTMLInputElement>(null)
 
   const sumbitHandler = (event: React.FormEvent) => {
@@ -12,7 +14,8 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
       return
     }
 
-    props.onAddTodo(enteredText)
+    onAddTodo(enteredText)
+    todoTextInputRef.current!.value = ""
   }
 
   return (
